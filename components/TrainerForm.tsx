@@ -21,6 +21,7 @@ import {
   TextField,
 } from '@mui/material';
 import PokemonPreview from '@/components/PokemonPreview';
+import SuccessDialog from '@/components/SuccessDialog';
 
 function TrainerForm() {
   const form = useForm<z.infer<typeof TrainerFormSchema>>({
@@ -46,28 +47,24 @@ function TrainerForm() {
   const pokemon = pokeQuery.data;
 
   const suggestions = searchQuery.data || [];
-  const isSearching = searchQuery.isLoading || debouncedSearchQuery != inputValue;
+  const isSearching =
+    (searchQuery.isLoading || debouncedSearchQuery != inputValue) && selectedPokemonId === null;
 
   const errors = form.formState.errors;
 
   const mutation = useMutation({
     mutationFn: SubmitTrainerData,
-    onSuccess: () => {
-      console.log('Trainer data submitted successfully');
-      handleReset();
-    },
-    onError: () => {
-      console.error('Error submitting trainer data');
-    },
   });
 
   const handleReset = () => {
     form.reset();
+    mutation.reset();
     reset();
   };
 
   return (
     <Box>
+      <SuccessDialog open={mutation.isSuccess} onClose={() => handleReset()} />
       <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))}>
         <Stack className="gap-6">
           <Stack direction={'row'} className="gap-6">
