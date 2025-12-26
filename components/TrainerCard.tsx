@@ -1,13 +1,13 @@
-import { Typography, Stack, Box } from '@mui/material';
+import { Stack, Box } from '@mui/material';
+
 import TrainerForm from '@/components/TrainerForm';
+import { DateDisplay } from '@/components/DateDisplay';
 
 function TrainerCard() {
   return (
     <Box component={'section'} className="border-gray-300 border p-8">
       <Stack className="gap-6">
-        <div className="flex justify-end">
-          <Typography>Wednesday, 06.03.2024</Typography>
-        </div>
+        <DateDisplay />
         <TrainerForm />
       </Stack>
     </Box>

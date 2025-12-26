@@ -1,18 +1,23 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import MuiThemeProvider from '@/providers/ThemeProvider';
-
 import TrainerCard from '@/components/TrainerCard';
+import { getQueryClient } from '@/lib/query';
+import { TIME_QUERY_FN, TIME_QUERY_KEY } from '@/queries/use-time-query';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
-export default function Home() {
+export default async function Page() {
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: [TIME_QUERY_KEY],
+    queryFn: TIME_QUERY_FN,
+  });
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <main>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <MuiThemeProvider>
-            <TrainerCard />
-          </MuiThemeProvider>
-        </AppRouterCacheProvider>
-      </main>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <div className="min-h-screen flex items-center justify-center">
+        <main>
+          <TrainerCard />
+        </main>
+      </div>
+    </HydrationBoundary>
   );
 }
