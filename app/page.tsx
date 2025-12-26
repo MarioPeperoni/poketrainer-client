@@ -14,9 +14,7 @@ export default async function Page() {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="min-h-screen flex items-center justify-center">
-        <main>
-          <TrainerCard />
-        </main>
+        <TrainerCard />
       </div>
     </HydrationBoundary>
   );

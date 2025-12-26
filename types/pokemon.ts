@@ -5,3 +5,8 @@ export type Pokemon = {
   experience: number;
   spriteUrl: string;
 };
+
+export type PokemonSearchResult = {
+  id: number;
+  name: string;
+};

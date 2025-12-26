@@ -5,7 +5,7 @@ import { DateDisplay } from '@/components/DateDisplay';
 
 function TrainerCard() {
   return (
-    <Box component={'section'} className="border-gray-300 border p-8">
+    <Box component={'main'} className="border-gray-300 border p-8">
       <Stack className="gap-6">
         <DateDisplay />
         <TrainerForm />

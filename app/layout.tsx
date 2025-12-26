@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${ibmVga.className} antialiased`}>
         <QueryProvider>
-          <AppRouterCacheProvider>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <MuiThemeProvider>{children}</MuiThemeProvider>
           </AppRouterCacheProvider>
         </QueryProvider>
