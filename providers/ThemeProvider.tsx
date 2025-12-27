@@ -82,12 +82,25 @@ const themeOptions: ThemeOptions = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: 'var(--mui-palette-grey-400)',
+          },
           '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: 'var(--mui-palette-primary-main)',
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             boxShadow: '0 0 0 4px var(--mui-palette-primary-light)',
             borderColor: 'var(--mui-palette-primary-main) !important',
+          },
+          '&.Mui-error .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'var(--mui-palette-grey-400)',
+          },
+          '&.Mui-error:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'var(--mui-palette-primary-main)',
+          },
+          '&.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'var(--mui-palette-primary-main) !important',
+            boxShadow: '0 0 0 4px var(--mui-palette-primary-light)',
           },
         },
       },
@@ -96,6 +109,36 @@ const themeOptions: ThemeOptions = createTheme({
       styleOverrides: {
         root: {
           marginLeft: 0,
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        popper: {
+          '&:hover': {
+            backgroundColor: 'var(--mui-palette-primary-light)',
+          },
+          '&.Mui-focused': {
+            backgroundColor: 'transparetn',
+          },
+        },
+        option: {
+          '&:hover': {
+            backgroundColor: 'var(--mui-palette-primary-light)',
+          },
+          '&.Mui-focused': {
+            backgroundColor: 'var(--mui-palette-primary-light)',
+          },
+          '&[aria-selected="true"]': {
+            color: 'var(--mui-palette-primary-main)',
+            backgroundColor: 'transparent',
+          },
+          '&[aria-selected="true"]:hover': {
+            backgroundColor: 'transparent',
+          },
+          '&[aria-selected="true"].Mui-focused': {
+            backgroundColor: 'transparent',
+          },
         },
       },
     },
