@@ -92,6 +92,7 @@ function TrainerForm() {
                   <InputLabel {...field}>Trainer&apos;s age</InputLabel>
                   <TextField
                     {...field}
+                    value={field.value ?? ''}
                     fullWidth
                     placeholder="Trainer's age"
                     slotProps={{
