@@ -1,9 +1,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
-      new URL('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/*'),
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '/PokeAPI/sprites/master/sprites/pokemon/**',
+      },
     ],
   },
 };
